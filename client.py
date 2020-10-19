@@ -31,3 +31,10 @@ id = "100"
 r = requests.get("http://127.0.0.1:5000/status/" + id)
 print(r.status_code)
 print(r.text)
+
+
+print("Get the heart rate info from ID:10 which doesn't exist")                        # should be 400
+id = "10"
+r = requests.get("http://127.0.0.1:5000/status/" + id)
+print(r.status_code)
+print(r.text)

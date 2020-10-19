@@ -152,12 +152,13 @@ def get_test(patient_id):
         if have_latest_hr == False:
            return "This patient doesn't have any heart rate history", 400
         return jsonify(have_latest_hr), 200
-    return "Please use an integer or a string of an integer containing an ID number", 400
+    return "Please use an integer or a numeric string containing " \
+           "an ID number but without any letter", 400
 
 
 def id_is_int(patient_id):
     try:
-        type(patient_id) in [str, int]
+        int(patient_id)
         return True
     except ValueError:
         return False
