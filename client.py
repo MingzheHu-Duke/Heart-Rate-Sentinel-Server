@@ -38,3 +38,10 @@ id = "10"
 r = requests.get("http://127.0.0.1:5000/status/" + id)
 print(r.status_code)
 print(r.text)
+
+
+print("Get Tom's average heart rate (101+104)/2")                        # should be 200
+id = "100"
+r = requests.get("http://127.0.0.1:5000/heart_rate/average/" + id)
+print(r.status_code)
+print(r.text)
