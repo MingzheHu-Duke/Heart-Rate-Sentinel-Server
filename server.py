@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import logging
+import numpy as np
 
 app = Flask(__name__)
 
@@ -11,12 +12,16 @@ def init_db():
     #   logging.basicConfig(filename="HR_Sentinel.log", filemode='w',
     #                      level=logging.DEBUG)
     add_patient_to_database(100, "Tom", 23)
-    Tom_heart_rate = {"heart_rate": 101,
+    Tom_heart_rate1 = {"heart_rate": 101,
                       "status": "tachycardic",
                       "timestamp": "2018-03-09 11:00:36"}
-    patient_db[0]["heart_rate_history"].append(Tom_heart_rate)
+    Tom_heart_rate2 = {"heart_rate": 104,
+                       "status": "tachycardic",
+                       "timestamp": "2018-03-10 11:00:36"}
+    patient_db[0]["heart_rate_history"].append(Tom_heart_rate1)
+    patient_db[0]["heart_rate_history"].append(Tom_heart_rate2)
     print(patient_db)
-    add_attending_to_database("Tom", "tom@gmail.com", "919-865-5674")
+    add_attending_to_database("AB", "tom@gmail.com", "919-865-5674")
 
 
 def add_patient_to_database(patient_id=None, attending_username=None,
@@ -136,7 +141,7 @@ def attending_info_detect(in_data):
 #这样我后面才能用
 
 @app.route("/status/<patient_id>", methods=["GET"]) #YT
-def get_get_results(patient_id):
+def get_latest_result(patient_id):
     answer, server_status = get_test(patient_id)
     # return results
     return answer, server_status
@@ -183,8 +188,35 @@ def latest_hr(patient):
 # @app.route("/heart_rate/<patient_id>", methods=["GET"]) #Mingzhe
 
 
-# @app.route("/heart_rate/average/<patient_id>", methods=["GET"]) # YT
+@app.route("/heart_rate/average/<patient_id>", methods=["GET"]) # YT
+def get_average_results(patient_id):
+    answer, server_status = get_average(patient_id)
+    # return results
+    return answer, server_status
 
+
+def get_average(patient_id):
+    int_id = id_is_int(patient_id) # function id_is_int() has been defined in Route /status/<patient_id>
+    if int_id is True:
+        patient = find_id(patient_id)  # function find_id() has been defined in Route /status/<patient_id>
+        if patient is False:
+            return "Could not find a matched patient in database", 400
+        have_average_hr =average_hr(patient)
+        if have_average_hr == False:
+           return "This patient doesn't have any heart rate history", 400
+        return jsonify(have_average_hr), 200
+    return "Please use an integer or a numeric string containing " \
+           "an ID number but without any letter", 400
+
+
+def average_hr(patient):
+    if len(patient["heart_rate_history"]) == 0:
+        return False
+    hr_list = []
+    for single_hr in patient["heart_rate_history"]:
+        hr_list.append(single_hr["heart_rate"])
+    avg_hr = int(np.mean(hr_list))
+    return avg_hr
 
 # @app.route("/heart_rate/interval_average", methods=["POST"]) #Mingzhe
 
