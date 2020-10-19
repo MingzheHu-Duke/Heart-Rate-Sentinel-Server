@@ -26,6 +26,15 @@ print(r.status_code)
 print(r.text)
 
 
+print("Add an existed attending though correct info type")                        # should be 400
+new_attending = {"attending_username": "Trump",
+                 "attending_email": "whatever",
+                 "attending_phone": "whatever"}
+r = requests.post("http://127.0.0.1:5000/new_attending", json=new_attending)
+print(r.status_code)
+print(r.text)
+
+
 print("Get Tom's latest heart rate info")                        # should be 200
 id = "100"
 r = requests.get("http://127.0.0.1:5000/status/" + id)
