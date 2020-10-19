@@ -9,7 +9,7 @@ print(r.status_code)
 print(r.text)
 
 
-print("Add new patient with str age")
+print("Add new patient 101 with str age")
 new_patient = {"patient_id": 101, "attending_username": "Everett",
                "patient_age": "18"}
 r = requests.post("http://127.0.0.1:5000/new_patient", json=new_patient)
@@ -35,7 +35,7 @@ print(r.status_code)
 print(r.text)
 
 
-print("Get Tom's latest heart rate info")                        # should be 200
+print("Get patient 100 's latest heart rate info")                        # should be 200
 id = "100"
 r = requests.get("http://127.0.0.1:5000/status/" + id)
 print(r.status_code)
@@ -49,8 +49,29 @@ print(r.status_code)
 print(r.text)
 
 
-print("Get Tom's average heart rate (101+104)/2")                        # should be 200
+print("Get patient 100 's average heart rate (101+104)/2")                        # should be 200
 id = "100"
 r = requests.get("http://127.0.0.1:5000/heart_rate/average/" + id)
+print(r.status_code)
+print(r.text)
+
+
+print("Get a non-existing attending Flora's all patient info list")                          # should be 400
+attending_username = "Flora"
+r = requests.get("http://127.0.0.1:5000//patients/" + attending_username)
+print(r.status_code)
+print(r.text)
+
+
+print("Get a invalid attending name Flora666's all patient info list")                          # should be 400
+attending_username = 'Flora666'
+r = requests.get("http://127.0.0.1:5000//patients/" + attending_username)
+print(r.status_code)
+print(r.text)
+
+
+print("Get attending Tom's all patient info list")                          # should be 200
+attending_username = "Tom"
+r = requests.get("http://127.0.0.1:5000//patients/" + attending_username)
 print(r.status_code)
 print(r.text)
