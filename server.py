@@ -47,15 +47,6 @@ def add_attending_to_database(attending_username, attending_email=None,
     print(attending_db)
 
 
-def validate_post_input(in_data, expected_key, expected_types):
-    for key, v_type in zip(expected_key, expected_types):
-        if key not in in_data.keys():
-            return "{} key not found in input".format(key)
-        if type(in_data[key]) != v_type:
-            return "{} key value has wrong variable type".format(key)
-    return True
-
-
 @app.route("/new_patient", methods=["POST"])
 def post_new_patient():
     # Receive request data
@@ -116,13 +107,33 @@ def process_new_attending(in_data):
         return validate_input + ", please make sure all your info are " \
                             "in the type of string!", 400
     info_valid = attending_info_detect(in_data)
+    attending_exist = if_attending_exist(in_data)
+    if attending_exist is not False:
+        return attending_exist + "Please create a nonredundante username to" \
+                                 "write a new attending into database", 400
     if info_valid is not True:
-        return info_valid + "please make sure all your info are " \
-                            "in the type of string!", 400
+        return info_valid + "please make sure you've entered correct info!", 400
     add_attending_to_database(attending_username=in_data["attending_username"],
                               attending_email=in_data["attending_email"],
                               attending_phone=in_data["attending_phone"])
-    return "Attending successfully added", 200
+    return "Attending:'{}' successfully added".format(in_data["attending_username"]), 200
+
+
+def if_attending_exist(in_data):
+    attending_username_list = []
+    for attending in attending_db:
+        attending_username_list.append(attending["attending_username"])
+    if in_data["attending_username"] in attending_username_list:
+        return "The attending already exists in database! "
+    return False
+
+def validate_post_input(in_data, expected_key, expected_types):
+    for key, v_type in zip(expected_key, expected_types):
+        if key not in in_data.keys():
+            return "{} key not found in input".format(key)
+        if type(in_data[key]) != v_type:
+            return "{} key value has wrong variable type".format(key)
+    return True
 
 
 def attending_info_detect(in_data):
