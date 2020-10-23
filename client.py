@@ -1,4 +1,7 @@
 import requests
+from server import init_db
+print("\n")
+
 
 print("Add an attending with his phone number is not string")
 # should be 400
@@ -8,6 +11,7 @@ new_attending = {"attending_username": "Everett",
 r = requests.post("http://127.0.0.1:5000/api/new_attending", json=new_attending)
 print(r.status_code)
 print(r.text)
+print("\n")
 
 
 print("Add an attending with his phone number is correct string")
@@ -18,6 +22,7 @@ new_attending = {"attending_username": "Everett",
 r = requests.post("http://127.0.0.1:5000/api/new_attending", json=new_attending)
 print(r.status_code)
 print(r.text)
+print("\n")
 
 
 print("Add new patient 101 with str age")
@@ -27,6 +32,7 @@ new_patient = {"patient_id": 101, "attending_username": "Everett",
 r = requests.post("http://127.0.0.1:5000/api/new_patient", json=new_patient)
 print(r.status_code)
 print(r.text)
+print("\n")
 
 
 print("Add an good attending with correct info type")
@@ -38,6 +44,7 @@ r = requests.post("http://127.0.0.1:5000/api/new_attending",
                   json=new_attending)
 print(r.status_code)
 print(r.text)
+print("\n")
 
 
 print("Add an existed attending though correct info type")
@@ -49,14 +56,7 @@ r = requests.post("http://127.0.0.1:5000/api/new_attending",
                   json=new_attending)
 print(r.status_code)
 print(r.text)
-
-
-print("Get patient 100 's latest heart rate info")
-# should be 200
-id = "100"
-r = requests.get("http://127.0.0.1:5000/api/status/" + id)
-print(r.status_code)
-print(r.text)
+print("\n")
 
 
 print("Get the heart rate info from ID:10 which doesn't exist")
@@ -65,46 +65,62 @@ id = "10"
 r = requests.get("http://127.0.0.1:5000/api/status/" + id)
 print(r.status_code)
 print(r.text)
+print("\n")
 
 
-print("Get patient 100 's average heart rate (101+104)/2")
+print("Get patient 120 's latest heart rate info")
+# status code should be 200
+id = "120"
+r = requests.get("http://127.0.0.1:5000/api/status/" + id)
+print(r.status_code)
+print(r.text)
+print("\n")
+
+
+print("Get patient 500's latest heart rate info, which is empty")
+# should be 400
+id = "500"
+r = requests.get("http://127.0.0.1:5000/api/status/" + id)
+print(r.status_code)
+print(r.text)
+print("\n")
+
+
+print("Get patient 120 's average heart rate (101+104)/2")
 # should be 200
-id = "100"
+id = "120"
 r = requests.get("http://127.0.0.1:5000/api/heart_rate/average/" + id)
 print(r.status_code)
 print(r.text)
-
-
+print("\n")
+#
+#
 print("Get a non-existing attending Flora's all patient info list")
 # should be 400
 attending_username = "Flora"
 r = requests.get("http://127.0.0.1:5000/api/patients/" + attending_username)
 print(r.status_code)
 print(r.text)
-
-
+print("\n")
+#
+#
 print("Get a invalid attending name Flora666's all patient info list")
 # should be 400
 attending_username = 'Flora666'
 r = requests.get("http://127.0.0.1:5000/api/patients/" + attending_username)
 print(r.status_code)
 print(r.text)
+print("\n")
+#
 
-
+#
 print("Get attending Tom's all patient info list")
 # should be 200
 attending_username = "Tom"
 r = requests.get("http://127.0.0.1:5000/api/patients/" + attending_username)
 print(r.status_code)
 print(r.text)
-
-
-print("Get attending Tom's all patient info list")
-# should be 200
-attending_username = "Tom"
-r = requests.get("http://127.0.0.1:5000/api/patients/" + attending_username)
-print(r.status_code)
-print(r.text)
+print("\n")
 
 
 print("Post heart rate to a patient 101, tachycardic")
@@ -113,6 +129,7 @@ new_patient = {"patient_id": 101, "heart_rate": 101}
 r = requests.post("http://127.0.0.1:5000/api/heart_rate", json=new_patient)
 print(r.status_code)
 print(r.text)
+print("\n")
 
 
 print("Post heart rate to a patient 101, not tachycardic")
@@ -121,6 +138,7 @@ new_patient = {"patient_id": 101, "heart_rate": 99}
 r = requests.post("http://127.0.0.1:5000/api/heart_rate", json=new_patient)
 print(r.status_code)
 print(r.text)
+print("\n")
 
 
 print("Get patient 101's heart rate history list")
@@ -129,6 +147,7 @@ patient_id = "101"
 r = requests.get("http://127.0.0.1:5000/api/heart_rate/" + patient_id)
 print(r.status_code)
 print(r.text)
+print("\n")
 
 
 print("Find an average heart rate")

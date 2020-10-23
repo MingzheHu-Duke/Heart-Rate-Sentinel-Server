@@ -3,34 +3,52 @@ import logging
 import numpy as np
 import json
 
+
 app = Flask(__name__)
-
-patient_db = list()
-attending_db = list()
-
 
 def init_db():
     logging.basicConfig(filename="HR_Sentinel.log", filemode='w',
                         level=logging.DEBUG)
-    add_patient_to_database(100, "Tom", 23)
-    # patient id 100, corresponding to attending Tom
-    patient101_heart_rate1 = {"heart_rate": 101,
-                              "status": "tachycardic",
-                              "timestamp": "2018-03-09 11:00:36"}
-    patient101_heart_rate2 = {"heart_rate": 104,
-                              "status": "tachycardic",
-                              "timestamp": "2018-03-10 11:00:36"}
-    patient_db[0]["heart_rate_history"].append(patient101_heart_rate1)
-    patient_db[0]["heart_rate_history"].append(patient101_heart_rate2)
+    patient_db = list()
+    # Initialize the patients database with 3 fake patients
+    patient_db =[{'patient_id': 120, 'attending_username': 'Tom',
+                  'patient_age': 23,
+                    'heart_rate_history': [{'heart_rate': 101,
+                                            'status': 'tachycardic',
+                                            'timestamp': '2018-03-09 11:00:36'},
+                                           {'heart_rate': 104,
+                                            'status': 'tachycardic',
+                                            'timestamp': '2018-03-10 11:00:36'}]},
+                   {'patient_id': 300, 'attending_username': 'Tom',
+                    'patient_age': 25,
+                    'heart_rate_history': [{'heart_rate': 75,
+                                            'status': 'not tachycardic',
+                                            'timestamp': '2019-10-10 11:00:36'}]},
+                   {'patient_id': 500, 'attending_username': 'Tom',
+                    'patient_age': 29, 'heart_rate_history': []}]
+    print("Initial patient database:")
+    print(patient_db)
+    print("\n")
+    # patient id 120, corresponding to attending Tom
+    # patient id 300, corresponding to attending Tom, and has age 25
+    # patient id 500, empty heart history
 
-    add_patient_to_database(200, "Tom", 99)
-    # patient id 200, corresponding to attending Tom
-    patient200_heart_rate1 = {"heart_rate": 75,
-                              "status": "not tachycardic",
-                              "timestamp": "2019-10-10 11:00:36"}
-    patient_db[1]["heart_rate_history"].append(patient200_heart_rate1)
     # Initialize the attending database with the first attending user
-    add_attending_to_database("Tom", "tom@gmail.com", "919-865-5674")
+    attending_db = list()
+    attending_db = [{'attending_username': 'Tom',
+                     'attending_email': 'tom@gmail.com',
+                     'attending_phone': '919-865-5674'},
+                    {'attending_username': 'Lady',
+                     'attending_email': 'Lady@gmail.com',
+                     'attending_phone': '919-222-333'}]
+    print("Initial attending database:")
+    print(attending_db)
+    print("\n")
+
+    return patient_db, attending_db
+
+
+patient_db, attending_db = init_db()
 
 
 def add_patient_to_database(patient_id=None, attending_username=None,
@@ -119,7 +137,7 @@ def process_new_attending(in_data):
     info_valid = attending_info_detect(in_data)
     attending_exist = if_attending_exist(in_data)
     if attending_exist is not False:
-        return attending_exist + "Please create a non redundant username to" \
+        return attending_exist + "Please create a non redundant username to " \
                                  "write a new attending into database", 400
     if info_valid is not True:
         return info_valid + "please make sure you've entered correct info", 400
@@ -151,7 +169,7 @@ def validate_post_input(in_data, expected_key, expected_types):
 def attending_info_detect(in_data):
     good_email = "@" in in_data["attending_email"]
     if good_email is not True:
-        return "You entered a invalid email address"
+        return "You entered a invalid email address, "
     return True
 
 
@@ -247,6 +265,7 @@ def email_sender(email, patient_id, rate, timestamp):
 
 
 def find_correct_patient(patient_id):
+    # patient_id must be an int
     for patient in patient_db:
         if patient["patient_id"] == patient_id:
             return patient
@@ -269,7 +288,7 @@ def get_latest_result(patient_id):
 def get_test(patient_id):
     int_id = id_is_int(patient_id)
     if int_id is True:
-        patient = find_id(patient_id)
+        patient = find_correct_patient(int(patient_id))
         if patient is False:
             return "Could not find a matched patient in database", 400
         have_latest_hr = latest_hr(patient)
@@ -288,22 +307,16 @@ def id_is_int(patient_id):
            "an ID number but without any letter"
 
 
-def find_id(patient_id):
-    for patient in patient_db:
-        if patient["patient_id"] == int(patient_id):
-            return patient
-        return False
-
-
 def latest_hr(patient):
     if len(patient["heart_rate_history"]) == 0:
         return False
+    newest_hr = patient["heart_rate_history"][-1]
     latest_heart_rate = {"heart_rate":
-                         patient["heart_rate_history"][-1]["heart_rate"],
+                         newest_hr["heart_rate"],
                          "status":
-                         patient["heart_rate_history"][-1]["status"],
+                         newest_hr["status"],
                          "timestamp":
-                         patient["heart_rate_history"][-1]["timestamp"]}
+                         newest_hr["timestamp"]}
     return latest_heart_rate
 
 
@@ -331,7 +344,7 @@ def get_average(patient_id):
     int_id = id_is_int(patient_id)
     # function id_is_int() has been defined in Route /status/<patient_id>
     if int_id is True:
-        patient = find_id(patient_id)
+        patient = find_correct_patient(int(patient_id))
         # function find_id() has been defined in Route /status/<patient_id>
         if patient is False:
             return "Could not find a matched patient in database", 400
@@ -349,7 +362,7 @@ def average_hr(patient):
     hr_list = []
     for single_hr in patient["heart_rate_history"]:
         hr_list.append(single_hr["heart_rate"])
-    avg_hr = int(np.mean(hr_list))
+    avg_hr = float(np.mean(hr_list))
     return avg_hr
 
 
@@ -410,8 +423,6 @@ def validate_time_format(time_in):
                "e.g. '2018-03-09 11:00:36'"
 
 
-
-
 @app.route("/api/patients/<attending_username>", methods=["GET"])
 def get_all_patients(attending_username):
     answer, server_status = all_patients(attending_username)
@@ -452,18 +463,24 @@ def match_username(attending_username):
 
 def return_data_list(attending_username):
     data_list = []
+    # try:
     for patient in patient_db:
         if patient["attending_username"] == attending_username:
-            dic = {"patient_id": patient["patient_id"],
-                   "last_heart_rate":
-                       patient["heart_rate_history"][-1]["heart_rate"],
-                   "last_time": patient["heart_rate_history"][-1]["timestamp"],
-                   "status": patient["heart_rate_history"][-1]["status"]}
+            if len(patient["heart_rate_history"]) == 0:
+                dic ={"patient_id": patient["patient_id"],
+                       "last_heart_rate": "No heart rate available"}
+            else:
+                dic = {"patient_id": patient["patient_id"],
+                       "last_heart_rate": patient["heart_rate_"
+                                                  "history"][-1]["heart_rate"],
+                       "last_time": patient["heart_rate_history"][-1]["timestamp"],
+                       "status": patient["heart_rate_history"][-1]["status"]}
             data_list.append(dic)
     return data_list
+    # except IndexError:
+    #     return
 
 
 if __name__ == '__main__':
     print("running")
-    init_db()
     app.run(debug=True)
