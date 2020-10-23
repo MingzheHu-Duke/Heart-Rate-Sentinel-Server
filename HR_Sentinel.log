@@ -1,0 +1,26 @@
+INFO:root:Added patient id: 100
+INFO:root:Added patient id: 200
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 114-873-972
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[31m[1mPOST /api/new_attending HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[37mPOST /api/new_attending HTTP/1.1[0m" 200 -
+INFO:root:Added patient id: 101
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[37mPOST /api/new_patient HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[37mPOST /api/new_attending HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[31m[1mPOST /api/new_attending HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[37mGET /api/status/100 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[31m[1mGET /api/status/10 HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[37mGET /api/heart_rate/average/100 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[31m[1mGET /api/patients/Flora HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[31m[1mGET /api/patients/Flora666 HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[37mGET /api/patients/Tom HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[37mGET /api/patients/Tom HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): vcm-7631.vm.duke.edu:5007
+DEBUG:urllib3.connectionpool:http://vcm-7631.vm.duke.edu:5007 "POST /hrss/send_email HTTP/1.1" 200 62
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[37mPOST /api/heart_rate HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): vcm-7631.vm.duke.edu:5007
+DEBUG:urllib3.connectionpool:http://vcm-7631.vm.duke.edu:5007 "POST /hrss/send_email HTTP/1.1" 200 62
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[37mPOST /api/heart_rate HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[37mGET /api/heart_rate/101 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [22/Oct/2020 20:58:53] "[37mPOST /api/heart_rate/interval_average HTTP/1.1[0m" 200 -
