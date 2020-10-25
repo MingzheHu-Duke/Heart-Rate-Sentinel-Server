@@ -641,3 +641,11 @@ def test_calculate_interval_average():
     answer3 = calculate_interval_average(in_data3)
     expected3 = 'Could not find heart rate since the given time', 400
     assert answer3 == expected3
+
+
+def test_get_heart_rate_list():
+    from server import get_heart_rate_list
+    patient_id = 10000
+    expected = "Could not find patient in database", 400
+    result = get_heart_rate_list(patient_id)
+    assert result == expected

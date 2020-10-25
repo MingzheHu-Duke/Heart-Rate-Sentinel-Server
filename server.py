@@ -8,6 +8,17 @@ app = Flask(__name__)
 
 
 def init_db():
+    '''Initialize databases and setup logging config
+
+    For program requirements and function testing, intialize both patients
+    and attendings databases with some fake but well-structuredinfo. Also,
+    setup logging with basic configurations.
+
+    Args:
+        None
+    Returns:
+        patient database and attending database, both as lists
+    '''
     # Initialize the patients database with 3 fake patients
     patient_db = [{'patient_id': 120, 'attending_username': 'Tom',
                    'patient_age': 23,
@@ -79,6 +90,20 @@ def logging(level, description):
 
 def add_patient_to_database(patient_id=None, attending_username=None,
                             patient_age=None):
+    '''Add a new patient with his info to patient database
+
+    Add, or say register, a new patient info in a dictionary, with
+    his id, username and age to existing patient database
+
+    Args:
+        patient_id(int): the id number of the added patient
+        attending_username(str): the corresponding username of the
+                                 added patient's attending
+        patient_age(int): the age number of the added patient
+
+    Returns:
+        None, but the patient database 'patient_db' is enlarged
+    '''
     new_patient = {"patient_id": patient_id,
                    "attending_username": attending_username,
                    "patient_age": patient_age,
@@ -91,6 +116,25 @@ def add_patient_to_database(patient_id=None, attending_username=None,
 
 def add_attending_to_database(attending_username, attending_email=None,
                               attending_phone=None):
+    '''Add a new attending with his info to patient database
+
+    Add, or say register, a new attending info in a dictionary,
+    with his username, email and phone number to existing
+    attending database
+
+    Args:
+        attending_username(str): the username of the added
+                                 attending
+        attending_email(str): the email address of the added
+                              attending
+        attending_phone(str): the phone number of the added
+                              attending but it is in the form
+                              of string, either numeric or
+                              with necessary symbols
+    Returns:
+        None, but the attending database 'attending_db' is
+        enlarged
+    '''
     new_attending = {"attending_username": attending_username,
                      "attending_email": attending_email,
                      "attending_phone": attending_phone}
@@ -103,6 +147,16 @@ def add_attending_to_database(attending_username, attending_email=None,
 
 @app.route("/api/new_patient", methods=["POST"])
 def post_new_patient():
+    '''Post a new patient to patient database
+
+    A new route for users to post a new patient to database
+    after processing and checking the input data
+
+    Args:
+        None
+    Returns:
+        Correct server response and the corresponding status code
+    '''
     # Receive request data
     in_data = request.get_json()
     # Call functions
@@ -161,6 +215,16 @@ def parse_string(dict_in, key_to_parse):
 
 @app.route("/api/new_attending", methods=["POST"])  # YT
 def post_new_attending():
+    '''Post a new attending to attending database
+
+    A new route for users to post a new attending to database
+    after processing and checking the input data.
+
+    Args:
+        None
+    Returns:
+        Correct server response and the corresponding status code
+    '''
     in_data = request.get_json()
     answer, server_status = process_new_attending(in_data)
     return answer, server_status
@@ -214,6 +278,19 @@ def attending_info_detect(in_data):
 
 @app.route("/api/heart_rate", methods=["POST"])
 def post_add_heart_rate():
+    '''Post a patient's heart rate data to patient database
+
+    A new route for users to post a patient's heart rate
+    record to database in the correct list for recording,
+    after processing and checking the input data. Also,
+    an email will be sent to that patient's attending if
+    a tachycardic heart rate is posted.
+
+    Args:
+        None
+    Returns:
+        Correct server response and the corresponding status code
+    '''
     in_data = request.get_json()
     answer, status_code = process_add_heart_rate(in_data)
     return answer, status_code
@@ -331,6 +408,17 @@ def find_correct_attending(attending_username):
 
 @app.route("/api/status/<patient_id>", methods=["GET"])
 def get_latest_result(patient_id):
+    '''Get a patient's latest heart rate info in a dictionary
+
+    A new route for users to get a dictionary of patient's
+    heart rate history from database in the form of .json
+    after processing and checking the input data
+
+    Args:
+        patient_id(str): the numeric string of target patient
+    Returns:
+        Correct server response and the corresponding status code
+    '''
     answer, server_status = get_test(patient_id)
     return answer, server_status
 
@@ -372,6 +460,17 @@ def latest_hr(patient):
 
 @app.route("/api/heart_rate/<patient_id>", methods=["GET"])
 def get_heart_rate_list(patient_id):
+    '''Get a patient's all heart rate info in a list
+
+    A new route for users to get a list of patient's
+    heart rate history from database after processing and
+    checking the input data
+
+    Args:
+        patient_id(str): the numeric string of target patient
+    Returns:
+        Correct server response and the corresponding status code
+    '''
     patient = find_correct_patient(int(patient_id))
     if patient is False:
         return "Could not find patient in database", 400
@@ -386,6 +485,17 @@ def get_heart_rate_list(patient_id):
 
 @app.route("/api/heart_rate/average/<patient_id>", methods=["GET"])
 def get_average_results(patient_id):
+    '''Get a patient's average heart rate as a float number
+
+    A new route for users to get a float number of patient's
+    heart rate history from database in the form of .json
+    after processing and checking the input data
+
+    Args:
+        patient_id(str): the numeric string of target patient
+    Returns:
+        Correct server response and the corresponding status code
+    '''
     answer, server_status = get_average(patient_id)
     return jsonify(answer), server_status
 
@@ -418,6 +528,19 @@ def average_hr(patient):
 
 @app.route("/api/heart_rate/interval_average", methods=["POST"])
 def post_average():
+    '''Post a time tage and get a patient's average heart rate
+       since that time
+
+    A new route for users to post a specific time and get that
+    patient's heart rate average value from database as integer
+    in the  form of .json after processing and checking the
+    input data
+
+    Args:
+        None
+    Returns:
+        Correct server response and the corresponding status code
+    '''
     in_data = request.get_json()
     answer, server_status = calculate_interval_average(in_data)
     return jsonify(answer), server_status
@@ -474,6 +597,19 @@ def validate_time_format(time_in):
 
 @app.route("/api/patients/<attending_username>", methods=["GET"])
 def get_all_patients(attending_username):
+    '''Get an attending's all patients' latest heart rate
+       in a list
+
+    A new route for users to get a list of dictionary of
+    all patients' lastest heart rate info which is registered
+    to the wanted attending, from database, in the form of .json
+    after processing and checking the input data.
+
+    Args:
+        attending_username(str): the username of target attending
+    Returns:
+        Correct server response and the corresponding status code
+    '''
     answer, server_status = all_patients(attending_username)
     return answer, server_status
 
