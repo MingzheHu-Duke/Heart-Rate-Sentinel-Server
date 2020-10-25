@@ -576,7 +576,7 @@ def get_all_patients(attending_username):
     A new route for users to get a list of dictionary of
     all patients' lastest heart rate info which is registered
     to the wanted attending, from database, in the form of .json
-    after processing and checking the input data
+    after processing and checking the input data.
 
     Args:
         attending_username(str): the username of target attending
