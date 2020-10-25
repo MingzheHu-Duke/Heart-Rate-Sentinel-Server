@@ -6,26 +6,29 @@ import json
 
 app = Flask(__name__)
 
+
 def init_db():
     logging.basicConfig(filename="HR_Sentinel.log", filemode='w',
                         level=logging.DEBUG)
-    patient_db = list()
+    # patient_db = list()
     # Initialize the patients database with 3 fake patients
-    patient_db =[{'patient_id': 120, 'attending_username': 'Tom',
-                  'patient_age': 23,
-                    'heart_rate_history': [{'heart_rate': 101,
-                                            'status': 'tachycardic',
-                                            'timestamp': '2018-03-09 11:00:36'},
-                                           {'heart_rate': 104,
-                                            'status': 'tachycardic',
-                                            'timestamp': '2018-03-10 11:00:36'}]},
-                   {'patient_id': 300, 'attending_username': 'Tom',
-                    'patient_age': 25,
-                    'heart_rate_history': [{'heart_rate': 75,
-                                            'status': 'not tachycardic',
-                                            'timestamp': '2019-10-10 11:00:36'}]},
-                   {'patient_id': 500, 'attending_username': 'Tom',
-                    'patient_age': 29, 'heart_rate_history': []}]
+    patient_db = [{'patient_id': 120, 'attending_username': 'Tom',
+                   'patient_age': 23,
+                   'heart_rate_history': [{'heart_rate': 101,
+                                           'status': 'tachycardic',
+                                           'timestamp': '2018-03-09 11:00:36'},
+                                          {'heart_rate': 104,
+                                          'status': 'tachycardic',
+                                           'timestamp':
+                                               '2018-03-10 11:00:36'}]},
+                  {'patient_id': 300, 'attending_username': 'Tom',
+                   'patient_age': 25,
+                   'heart_rate_history': [{'heart_rate': 75,
+                                           'status': 'not tachycardic',
+                                           'timestamp':
+                                               '2019-10-10 11:00:36'}]},
+                  {'patient_id': 500, 'attending_username': 'Tom',
+                   'patient_age': 29, 'heart_rate_history': []}]
     print("Initial patient database:")
     print(patient_db)
     print("\n")
@@ -34,7 +37,7 @@ def init_db():
     # patient id 500, empty heart history
 
     # Initialize the attending database with the first attending user
-    attending_db = list()
+    # attending_db = list()
     attending_db = [{'attending_username': 'Tom',
                      'attending_email': 'tom@gmail.com',
                      'attending_phone': '919-865-5674'},
@@ -90,11 +93,15 @@ def process_new_patient(in_data):
     parse_string(in_data, "patient_id")
     parse_string(in_data, "patient_age")
     validate_input = validate_post_input(in_data, expected_key, expected_types)
-    valid_age = validate_age(in_data["patient_age"])
     if validate_input is not True:
         return validate_input, 400
+    valid_age = validate_age(in_data["patient_age"])
     if valid_age is not True:
         return valid_age, 400
+    valid_primary_key = primary_key(patient_db, "patient_id",
+                                    in_data["patient_id"])
+    if valid_primary_key is not True:
+        return valid_primary_key, 400
     add_patient_to_database(in_data["patient_id"],
                             in_data["attending_username"],
                             in_data["patient_age"])
@@ -110,14 +117,22 @@ def validate_age(age):
         return True
 
 
+def primary_key(data_base, key, key_value):
+    for record in data_base:
+        if record[key] == key_value:
+            return "{} is the primary key, should be unique!".format(key)
+    return True
+
+
 def parse_string(dict_in, key_to_parse):
     try:
         if type(dict_in[key_to_parse]) is str:
             if dict_in[key_to_parse].isdigit() is True:
                 dict_in[key_to_parse] = int(dict_in[key_to_parse])
-                return dict_in
+                return "Successfully parsed!"
     except KeyError:
-        return dict_in
+        return "The key to parse does not exist."
+    return "No need to parse."
 
 
 @app.route("/api/new_attending", methods=["POST"])  # YT
@@ -197,15 +212,22 @@ def process_add_heart_rate(in_data):
     attending = find_correct_attending(patient["attending_username"])
     if attending is False:
         return "Could not find attending of this patient in database", 400
-    data_to_add = {"heart_rate": in_data["heart_rate"],
-                   "status": is_tachycardic(in_data, patient,
-                                            attending, timestamp),
-                   "timestamp": timestamp}
-    patient["heart_rate_history"].append(data_to_add)
+    add_heart_rate_to_database(patient, in_data["heart_rate"],
+                               is_tachycardic(in_data, patient,
+                                              attending, timestamp), timestamp)
     print(patient_db)
     return "Heart rate info successfully added", 200
 
 
+def add_heart_rate_to_database(patient, heart_rate, status, timestamp):
+    data_to_add = {"heart_rate": heart_rate,
+                   "status": status,
+                   "timestamp": timestamp}
+    patient["heart_rate_history"].append(data_to_add)
+
+
+# This function will not be test, since it is directly calling the
+# Function of datetime.dateime.strftime
 def time_formatter(time_in, time_format):
     time_out = str(time_in.strftime(time_format))
     return time_out
@@ -239,10 +261,10 @@ def is_tachycardic(dict_in, patient, attending, timestamp):
         if rate > 100:
             flag = 1
 
-    email_sender(email, patient_id, rate, timestamp)
     if flag == 0:
         return "not tachycardic"
     elif flag == 1:
+        email_sender(email, patient_id, rate, timestamp)
         return "tachycardic"
 
 
@@ -262,6 +284,7 @@ def email_sender(email, patient_id, rate, timestamp):
     print(r.status_code)
     print(r.text)
     print(new_email)
+    return r.status_code, r.text, new_email
 
 
 def find_correct_patient(patient_id):
@@ -411,7 +434,6 @@ def find_interval_rates(in_data, patient):
     return get_heart_rate_list
 
 
-
 def validate_time_format(time_in):
     from datetime import datetime
     try:
@@ -467,13 +489,14 @@ def return_data_list(attending_username):
     for patient in patient_db:
         if patient["attending_username"] == attending_username:
             if len(patient["heart_rate_history"]) == 0:
-                dic ={"patient_id": patient["patient_id"],
+                dic = {"patient_id": patient["patient_id"],
                        "last_heart_rate": "No heart rate available"}
             else:
                 dic = {"patient_id": patient["patient_id"],
                        "last_heart_rate": patient["heart_rate_"
                                                   "history"][-1]["heart_rate"],
-                       "last_time": patient["heart_rate_history"][-1]["timestamp"],
+                       "last_time":
+                           patient["heart_rate_history"][-1]["timestamp"],
                        "status": patient["heart_rate_history"][-1]["status"]}
             data_list.append(dic)
     return data_list

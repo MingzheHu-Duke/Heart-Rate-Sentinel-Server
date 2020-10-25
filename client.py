@@ -8,7 +8,8 @@ print("Add an attending with his phone number is not string")
 new_attending = {"attending_username": "Everett",
                  "attending_email": "Every@outlook.com",
                  "attending_phone": 9191111110}
-r = requests.post("http://127.0.0.1:5000/api/new_attending", json=new_attending)
+r = requests.post("http://127.0.0.1:5000/api/new_attending",
+                  json=new_attending)
 print(r.status_code)
 print(r.text)
 print("\n")
@@ -19,7 +20,8 @@ print("Add an attending with his phone number is correct string")
 new_attending = {"attending_username": "Everett",
                  "attending_email": "Every@outlook.com",
                  "attending_phone": "919-1111-110"}
-r = requests.post("http://127.0.0.1:5000/api/new_attending", json=new_attending)
+r = requests.post("http://127.0.0.1:5000/api/new_attending",
+                  json=new_attending)
 print(r.status_code)
 print(r.text)
 print("\n")
