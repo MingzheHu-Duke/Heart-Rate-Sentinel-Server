@@ -1,0 +1,58 @@
+2020-10-25 18:17:20,175:INFO:The Data base is initialized!
+2020-10-25 18:17:20,191:INFO: * Restarting with stat
+2020-10-25 18:17:20,842:INFO:The Data base is initialized!
+2020-10-25 18:17:20,850:WARNING: * Debugger is active!
+2020-10-25 18:17:20,855:INFO: * Debugger PIN: 114-873-972
+2020-10-25 18:17:20,865:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 18:17:24,315:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[31m[1mPOST /api/new_attending HTTP/1.1[0m" 400 -
+2020-10-25 18:17:24,318:INFO:New attending added. Username:Everett Email:Every@outlook.com
+2020-10-25 18:17:24,319:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[37mPOST /api/new_attending HTTP/1.1[0m" 200 -
+2020-10-25 18:17:24,323:INFO:New patient added. Patient ID:101
+2020-10-25 18:17:24,324:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[37mPOST /api/new_patient HTTP/1.1[0m" 200 -
+2020-10-25 18:17:24,327:INFO:New attending added. Username:Trump Email:DTrump@whitehouse.com
+2020-10-25 18:17:24,327:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[37mPOST /api/new_attending HTTP/1.1[0m" 200 -
+2020-10-25 18:17:24,330:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[31m[1mPOST /api/new_attending HTTP/1.1[0m" 400 -
+2020-10-25 18:17:24,333:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[31m[1mGET /api/status/10 HTTP/1.1[0m" 400 -
+2020-10-25 18:17:24,335:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[37mGET /api/status/120 HTTP/1.1[0m" 200 -
+2020-10-25 18:17:24,338:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[31m[1mGET /api/status/500 HTTP/1.1[0m" 400 -
+2020-10-25 18:17:24,341:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[37mGET /api/heart_rate/average/120 HTTP/1.1[0m" 200 -
+2020-10-25 18:17:24,344:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[31m[1mGET /api/patients/Flora HTTP/1.1[0m" 400 -
+2020-10-25 18:17:24,347:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[31m[1mGET /api/patients/Flora666 HTTP/1.1[0m" 400 -
+2020-10-25 18:17:24,350:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[37mGET /api/patients/Tom HTTP/1.1[0m" 200 -
+2020-10-25 18:17:24,414:INFO:Warning! Tachycardic detected! patient ID:101 heart rate:Every@outlook.com --> Attending email:101
+2020-10-25 18:17:24,559:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[37mPOST /api/heart_rate HTTP/1.1[0m" 200 -
+2020-10-25 18:17:24,572:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[37mPOST /api/heart_rate HTTP/1.1[0m" 200 -
+2020-10-25 18:17:24,582:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[37mGET /api/heart_rate/101 HTTP/1.1[0m" 200 -
+2020-10-25 18:17:24,594:INFO:127.0.0.1 - - [25/Oct/2020 18:17:24] "[37mPOST /api/heart_rate/interval_average HTTP/1.1[0m" 200 -
+2020-10-25 18:18:35,661:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 18:18:35,741:INFO: * Restarting with stat
+2020-10-25 18:18:36,407:INFO:The Data base is initialized!
+2020-10-25 18:18:36,416:WARNING: * Debugger is active!
+2020-10-25 18:18:36,421:INFO: * Debugger PIN: 114-873-972
+2020-10-25 18:18:36,429:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 18:25:18,471:INFO:The Data base is initialized!
+2020-10-25 18:25:18,486:INFO: * Restarting with stat
+2020-10-25 18:25:19,121:INFO:The Data base is initialized!
+2020-10-25 18:25:19,128:WARNING: * Debugger is active!
+2020-10-25 18:25:19,133:INFO: * Debugger PIN: 114-873-972
+2020-10-25 18:25:19,142:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 18:25:23,461:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[31m[1mPOST /api/new_attending HTTP/1.1[0m" 400 -
+2020-10-25 18:25:23,464:INFO:New attending added. Username:Everett Email:Every@outlook.com
+2020-10-25 18:25:23,465:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[37mPOST /api/new_attending HTTP/1.1[0m" 200 -
+2020-10-25 18:25:23,467:INFO:New patient added. Patient ID:101
+2020-10-25 18:25:23,468:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[37mPOST /api/new_patient HTTP/1.1[0m" 200 -
+2020-10-25 18:25:23,471:INFO:New attending added. Username:Trump Email:DTrump@whitehouse.com
+2020-10-25 18:25:23,472:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[37mPOST /api/new_attending HTTP/1.1[0m" 200 -
+2020-10-25 18:25:23,475:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[31m[1mPOST /api/new_attending HTTP/1.1[0m" 400 -
+2020-10-25 18:25:23,479:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[31m[1mGET /api/status/10 HTTP/1.1[0m" 400 -
+2020-10-25 18:25:23,482:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[37mGET /api/status/120 HTTP/1.1[0m" 200 -
+2020-10-25 18:25:23,485:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[31m[1mGET /api/status/500 HTTP/1.1[0m" 400 -
+2020-10-25 18:25:23,487:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[37mGET /api/heart_rate/average/120 HTTP/1.1[0m" 200 -
+2020-10-25 18:25:23,490:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[31m[1mGET /api/patients/Flora HTTP/1.1[0m" 400 -
+2020-10-25 18:25:23,493:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[31m[1mGET /api/patients/Flora666 HTTP/1.1[0m" 400 -
+2020-10-25 18:25:23,496:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[37mGET /api/patients/Tom HTTP/1.1[0m" 200 -
+2020-10-25 18:25:23,559:INFO:Warning! Tachycardic detected! patient ID:101 heart rate:Every@outlook.com --> Attending email:101
+2020-10-25 18:25:23,673:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[37mPOST /api/heart_rate HTTP/1.1[0m" 200 -
+2020-10-25 18:25:23,686:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[37mPOST /api/heart_rate HTTP/1.1[0m" 200 -
+2020-10-25 18:25:23,701:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[37mGET /api/heart_rate/101 HTTP/1.1[0m" 200 -
+2020-10-25 18:25:23,714:INFO:127.0.0.1 - - [25/Oct/2020 18:25:23] "[37mPOST /api/heart_rate/interval_average HTTP/1.1[0m" 200 -

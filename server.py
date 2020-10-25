@@ -8,9 +8,6 @@ app = Flask(__name__)
 
 
 def init_db():
-    logging.basicConfig(filename="HR_Sentinel.log", filemode='w',
-                        level=logging.DEBUG)
-    # patient_db = list()
     # Initialize the patients database with 3 fake patients
     patient_db = [{'patient_id': 120, 'attending_username': 'Tom',
                    'patient_age': 23,
@@ -28,7 +25,10 @@ def init_db():
                                            'timestamp':
                                                '2019-10-10 11:00:36'}]},
                   {'patient_id': 500, 'attending_username': 'Tom',
-                   'patient_age': 29, 'heart_rate_history': []}]
+                   'patient_age': 29, 'heart_rate_history': []},
+                  {'patient_id': 250, 'attending_username': 'Josh',
+                   'patient_age': 20, 'heart_rate_history': []}
+                  ]
     print("Initial patient database:")
     print(patient_db)
     print("\n")
@@ -54,6 +54,29 @@ def init_db():
 patient_db, attending_db = init_db()
 
 
+def logging(level, description):
+    """Log all the events
+    log all the events, user can decide the level and customize the
+    description
+    Args:
+        level (int): the logging level
+        description (string): The string add to the log
+    Returns:
+        None
+    """
+    import logging
+    # only log the level above INFO
+    logging.basicConfig(filename="HR_Sentinel.log", level=logging.INFO,
+                        format="%(asctime)s:%(levelname)s:%(message)s")
+    if level == 0:
+        logging.info(description)
+    elif level == 1:
+        logging.warning(description)
+    elif level == 2:
+        logging.error(description)
+    return
+
+
 def add_patient_to_database(patient_id=None, attending_username=None,
                             patient_age=None):
     new_patient = {"patient_id": patient_id,
@@ -61,7 +84,7 @@ def add_patient_to_database(patient_id=None, attending_username=None,
                    "patient_age": patient_age,
                    "heart_rate_history": list()}
     patient_db.append(new_patient)
-    logging.info("Added patient id: {}".format(patient_id))
+    logging(0, "New patient added. Patient ID:{}".format(patient_id))
     print("patient database:\r")
     print(patient_db)
 
@@ -72,7 +95,8 @@ def add_attending_to_database(attending_username, attending_email=None,
                      "attending_email": attending_email,
                      "attending_phone": attending_phone}
     attending_db.append(new_attending)
-    # logging.info("Added patient {}".format(name))
+    logging(0, "New attending added. Username:{} Email:{}".
+            format(attending_username, attending_email))
     print("attending database:\r")
     print(attending_db)
 
@@ -279,6 +303,9 @@ def email_sender(email, patient_id, rate, timestamp):
                    "A tachycardia happened!".format(patient_id,
                                                     rate, timestamp)
     }
+    logging(0, "Warning! Tachycardic detected!"
+               " patient ID:{} heart rate:{} --> "
+               "Attending email:{}".format(patient_id, email, rate))
     r = requests.post("http://vcm-7631.vm.duke.edu:5007/hrss/send_email",
                       json=new_email)
     print(r.status_code)
@@ -360,7 +387,7 @@ def get_heart_rate_list(patient_id):
 @app.route("/api/heart_rate/average/<patient_id>", methods=["GET"])
 def get_average_results(patient_id):
     answer, server_status = get_average(patient_id)
-    return answer, server_status
+    return jsonify(answer), server_status
 
 
 def get_average(patient_id):
@@ -374,7 +401,7 @@ def get_average(patient_id):
         have_average_hr = average_hr(patient)
         if have_average_hr is False:
             return "This patient doesn't have any heart rate history", 400
-        return jsonify(have_average_hr), 200
+        return have_average_hr, 200
     return "Please use an integer or a numeric string containing " \
            "an ID number but without any letter", 400
 
@@ -393,7 +420,7 @@ def average_hr(patient):
 def post_average():
     in_data = request.get_json()
     answer, server_status = calculate_interval_average(in_data)
-    return answer, server_status
+    return jsonify(answer), server_status
 
 
 def calculate_interval_average(in_data):
@@ -412,8 +439,8 @@ def calculate_interval_average(in_data):
     interval_list = find_interval_rates(in_data, patient)
     if (not interval_list) is True:
         return "Could not find heart rate since the given time", 400
-    average_rate = list_average(interval_list)
-    return jsonify(average_rate), 200
+    average_rate = int(list_average(interval_list))
+    return average_rate, 200
 
 
 def list_average(list_in):
@@ -506,4 +533,5 @@ def return_data_list(attending_username):
 
 if __name__ == '__main__':
     print("running")
+    logging(0, "The Data base is initialized!")
     app.run(debug=True)
