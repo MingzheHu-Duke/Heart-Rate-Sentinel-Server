@@ -421,7 +421,12 @@ def test_process_add_heart_rate():
 #     assert result2 == expected2
 #
 #
-# # def test_get_heart_rate_list()
+def test_get_heart_rate_list():
+    from server import get_heart_rate_list
+    patient_id = 10000
+    expected = "Could not find patient in database", 400
+    result = get_heart_rate_list(patient_id)
+    assert result == expected
 #
 #
 # def test_get_average():
