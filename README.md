@@ -10,7 +10,7 @@ Ye:
 
 *`POST /api/new_attending`
    ```python
-  {"attending_usename": str, 
+{"attending_usename": str, 
   "attending_email": str, 
   "attending_phone": str}
   ``` 

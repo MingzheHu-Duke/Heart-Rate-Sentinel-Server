@@ -46,3 +46,203 @@ DEBUG:urllib3.connectionpool:http://vcm-7631.vm.duke.edu:5007 "POST /hrss/send_e
 INFO:werkzeug:127.0.0.1 - - [23/Oct/2020 15:28:11] "[37mPOST /api/heart_rate HTTP/1.1[0m" 200 -
 INFO:werkzeug:127.0.0.1 - - [23/Oct/2020 15:28:11] "[37mGET /api/heart_rate/101 HTTP/1.1[0m" 200 -
 INFO:werkzeug:127.0.0.1 - - [23/Oct/2020 15:28:11] "[37mPOST /api/heart_rate/interval_average HTTP/1.1[0m" 200 -
+2020-10-25 19:33:31,308:INFO:The Data base is initialized!
+2020-10-25 19:33:31,322:INFO: * Restarting with stat
+2020-10-25 19:33:31,964:INFO:The Data base is initialized!
+2020-10-25 19:33:31,972:WARNING: * Debugger is active!
+2020-10-25 19:33:31,977:INFO: * Debugger PIN: 114-873-972
+2020-10-25 19:33:31,986:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 19:33:43,040:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[31m[1mPOST /api/new_attending HTTP/1.1[0m" 400 -
+2020-10-25 19:33:43,043:INFO:New attending added. Username:Everett Email:Every@outlook.com
+2020-10-25 19:33:43,043:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[37mPOST /api/new_attending HTTP/1.1[0m" 200 -
+2020-10-25 19:33:43,046:INFO:New patient added. Patient ID:101
+2020-10-25 19:33:43,047:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[37mPOST /api/new_patient HTTP/1.1[0m" 200 -
+2020-10-25 19:33:43,049:INFO:New attending added. Username:Trump Email:DTrump@whitehouse.com
+2020-10-25 19:33:43,050:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[37mPOST /api/new_attending HTTP/1.1[0m" 200 -
+2020-10-25 19:33:43,054:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[31m[1mPOST /api/new_attending HTTP/1.1[0m" 400 -
+2020-10-25 19:33:43,057:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[31m[1mGET /api/status/10 HTTP/1.1[0m" 400 -
+2020-10-25 19:33:43,060:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[37mGET /api/status/120 HTTP/1.1[0m" 200 -
+2020-10-25 19:33:43,062:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[31m[1mGET /api/status/500 HTTP/1.1[0m" 400 -
+2020-10-25 19:33:43,065:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[37mGET /api/heart_rate/average/120 HTTP/1.1[0m" 200 -
+2020-10-25 19:33:43,068:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[31m[1mGET /api/patients/Flora HTTP/1.1[0m" 400 -
+2020-10-25 19:33:43,071:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[31m[1mGET /api/patients/Flora666 HTTP/1.1[0m" 400 -
+2020-10-25 19:33:43,074:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[37mGET /api/patients/Tom HTTP/1.1[0m" 200 -
+2020-10-25 19:33:43,142:INFO:Warning! Tachycardic detected! patient ID:101 heart rate:Every@outlook.com --> Attending email:101
+2020-10-25 19:33:43,246:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[37mPOST /api/heart_rate HTTP/1.1[0m" 200 -
+2020-10-25 19:33:43,249:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[37mPOST /api/heart_rate HTTP/1.1[0m" 200 -
+2020-10-25 19:33:43,254:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[37mGET /api/heart_rate/101 HTTP/1.1[0m" 200 -
+2020-10-25 19:33:43,260:INFO:127.0.0.1 - - [25/Oct/2020 19:33:43] "[37mPOST /api/heart_rate/interval_average HTTP/1.1[0m" 200 -
+2020-10-25 19:35:59,226:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 19:35:59,293:INFO: * Restarting with stat
+2020-10-25 19:35:59,948:INFO:The Data base is initialized!
+2020-10-25 19:35:59,956:WARNING: * Debugger is active!
+2020-10-25 19:35:59,961:INFO: * Debugger PIN: 114-873-972
+2020-10-25 19:35:59,970:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 19:51:14,951:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 19:51:15,030:INFO: * Restarting with stat
+2020-10-25 19:51:15,679:INFO:The Data base is initialized!
+2020-10-25 19:51:15,687:WARNING: * Debugger is active!
+2020-10-25 19:51:15,691:INFO: * Debugger PIN: 114-873-972
+2020-10-25 19:51:15,700:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 19:52:36,839:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 19:52:36,900:INFO: * Restarting with stat
+2020-10-25 19:52:37,556:INFO:The Data base is initialized!
+2020-10-25 19:52:37,564:WARNING: * Debugger is active!
+2020-10-25 19:52:37,569:INFO: * Debugger PIN: 114-873-972
+2020-10-25 19:52:37,578:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 19:54:28,689:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 19:54:28,784:INFO: * Restarting with stat
+2020-10-25 19:54:29,486:INFO:The Data base is initialized!
+2020-10-25 19:54:29,494:WARNING: * Debugger is active!
+2020-10-25 19:54:29,502:INFO: * Debugger PIN: 114-873-972
+2020-10-25 19:54:29,523:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 20:06:23,058:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 20:06:23,149:INFO: * Restarting with stat
+2020-10-25 20:06:23,927:INFO:The Data base is initialized!
+2020-10-25 20:06:23,935:WARNING: * Debugger is active!
+2020-10-25 20:06:23,939:INFO: * Debugger PIN: 114-873-972
+2020-10-25 20:06:23,948:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 20:07:30,241:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 20:07:30,325:INFO: * Restarting with stat
+2020-10-25 20:07:31,041:INFO:The Data base is initialized!
+2020-10-25 20:07:31,049:WARNING: * Debugger is active!
+2020-10-25 20:07:31,054:INFO: * Debugger PIN: 114-873-972
+2020-10-25 20:07:31,062:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 20:17:26,743:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 20:17:26,798:INFO: * Restarting with stat
+2020-10-25 20:17:27,569:INFO:The Data base is initialized!
+2020-10-25 20:17:27,577:WARNING: * Debugger is active!
+2020-10-25 20:17:27,582:INFO: * Debugger PIN: 114-873-972
+2020-10-25 20:17:27,591:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 20:21:32,084:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 20:21:32,169:INFO: * Restarting with stat
+2020-10-25 20:21:32,926:INFO:The Data base is initialized!
+2020-10-25 20:21:32,934:WARNING: * Debugger is active!
+2020-10-25 20:21:32,938:INFO: * Debugger PIN: 114-873-972
+2020-10-25 20:21:32,947:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 20:24:54,548:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 20:24:54,590:INFO: * Restarting with stat
+2020-10-25 20:24:55,462:INFO:The Data base is initialized!
+2020-10-25 20:24:55,471:WARNING: * Debugger is active!
+2020-10-25 20:24:55,477:INFO: * Debugger PIN: 114-873-972
+2020-10-25 20:24:55,486:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 20:33:04,450:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 20:33:04,640:INFO: * Restarting with stat
+2020-10-25 20:33:05,372:INFO:The Data base is initialized!
+2020-10-25 20:33:05,380:WARNING: * Debugger is active!
+2020-10-25 20:33:05,386:INFO: * Debugger PIN: 114-873-972
+2020-10-25 20:33:05,394:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 20:33:05,937:INFO:The Data base is initialized!
+2020-10-25 20:33:05,946:INFO: * Restarting with stat
+2020-10-25 20:39:45,940:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 20:39:46,015:INFO: * Restarting with stat
+2020-10-25 20:39:46,670:INFO:The Data base is initialized!
+2020-10-25 20:39:46,678:WARNING: * Debugger is active!
+2020-10-25 20:39:46,683:INFO: * Debugger PIN: 114-873-972
+2020-10-25 20:39:46,692:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 20:42:49,456:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 20:42:49,526:INFO: * Restarting with stat
+2020-10-25 20:42:50,511:INFO:The Data base is initialized!
+2020-10-25 20:42:50,519:WARNING: * Debugger is active!
+2020-10-25 20:42:50,523:INFO: * Debugger PIN: 114-873-972
+2020-10-25 20:42:50,532:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 20:44:58,009:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 20:44:58,075:INFO: * Restarting with stat
+2020-10-25 20:44:58,754:INFO:The Data base is initialized!
+2020-10-25 20:44:58,763:WARNING: * Debugger is active!
+2020-10-25 20:44:58,767:INFO: * Debugger PIN: 114-873-972
+2020-10-25 20:44:58,777:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 20:46:14,076:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 20:46:14,126:INFO: * Restarting with stat
+2020-10-25 20:46:14,782:INFO:The Data base is initialized!
+2020-10-25 20:46:14,789:WARNING: * Debugger is active!
+2020-10-25 20:46:14,794:INFO: * Debugger PIN: 114-873-972
+2020-10-25 20:46:14,803:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 20:48:12,904:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 20:48:12,978:INFO: * Restarting with stat
+2020-10-25 20:48:13,655:INFO:The Data base is initialized!
+2020-10-25 20:48:13,663:WARNING: * Debugger is active!
+2020-10-25 20:48:13,667:INFO: * Debugger PIN: 114-873-972
+2020-10-25 20:48:13,676:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 20:49:33,540:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 20:49:33,592:INFO: * Restarting with stat
+2020-10-25 20:49:34,289:INFO:The Data base is initialized!
+2020-10-25 20:49:34,297:WARNING: * Debugger is active!
+2020-10-25 20:49:34,302:INFO: * Debugger PIN: 114-873-972
+2020-10-25 20:49:34,311:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 20:52:44,923:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 20:52:44,997:INFO: * Restarting with stat
+2020-10-25 20:52:45,973:INFO:The Data base is initialized!
+2020-10-25 20:52:45,981:WARNING: * Debugger is active!
+2020-10-25 20:52:45,986:INFO: * Debugger PIN: 114-873-972
+2020-10-25 20:52:46,001:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 20:53:32,993:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 20:53:33,076:INFO: * Restarting with stat
+2020-10-25 20:53:33,744:INFO:The Data base is initialized!
+2020-10-25 20:53:33,752:WARNING: * Debugger is active!
+2020-10-25 20:53:33,759:INFO: * Debugger PIN: 114-873-972
+2020-10-25 20:53:33,777:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 20:56:55,556:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 20:56:55,659:INFO: * Restarting with stat
+2020-10-25 20:56:56,371:INFO:The Data base is initialized!
+2020-10-25 20:56:56,379:WARNING: * Debugger is active!
+2020-10-25 20:56:56,384:INFO: * Debugger PIN: 114-873-972
+2020-10-25 20:56:56,393:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 21:00:54,290:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 21:00:54,359:INFO: * Restarting with stat
+2020-10-25 21:00:55,259:INFO:The Data base is initialized!
+2020-10-25 21:00:55,275:WARNING: * Debugger is active!
+2020-10-25 21:00:55,283:INFO: * Debugger PIN: 114-873-972
+2020-10-25 21:00:55,303:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 21:02:02,936:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 21:02:03,027:INFO: * Restarting with stat
+2020-10-25 21:02:03,657:INFO:The Data base is initialized!
+2020-10-25 21:02:03,664:WARNING: * Debugger is active!
+2020-10-25 21:02:03,669:INFO: * Debugger PIN: 114-873-972
+2020-10-25 21:02:03,678:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 21:04:55,227:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 21:04:55,271:INFO: * Restarting with stat
+2020-10-25 21:04:55,922:INFO:The Data base is initialized!
+2020-10-25 21:04:55,931:WARNING: * Debugger is active!
+2020-10-25 21:04:55,936:INFO: * Debugger PIN: 114-873-972
+2020-10-25 21:04:55,946:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 21:06:06,664:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 21:06:06,707:INFO: * Restarting with stat
+2020-10-25 21:06:07,362:INFO:The Data base is initialized!
+2020-10-25 21:06:07,370:WARNING: * Debugger is active!
+2020-10-25 21:06:07,374:INFO: * Debugger PIN: 114-873-972
+2020-10-25 21:06:07,383:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 21:09:40,905:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 21:09:40,994:INFO: * Restarting with stat
+2020-10-25 21:09:41,693:INFO:The Data base is initialized!
+2020-10-25 21:09:41,701:WARNING: * Debugger is active!
+2020-10-25 21:09:41,706:INFO: * Debugger PIN: 114-873-972
+2020-10-25 21:09:41,714:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 21:10:32,877:INFO: * Detected change in 'C:\\Users\\mingz\\PycharmProjects\\Heart-Rate-Sentinel-Server\\server.py', reloading
+2020-10-25 21:10:32,925:INFO: * Restarting with stat
+2020-10-25 21:58:25,597:INFO:The Data base is initialized!
+2020-10-25 21:58:25,615:INFO: * Restarting with stat
+2020-10-25 21:58:26,255:INFO:The Data base is initialized!
+2020-10-25 21:58:26,263:WARNING: * Debugger is active!
+2020-10-25 21:58:26,268:INFO: * Debugger PIN: 114-873-972
+2020-10-25 21:58:26,277:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-10-25 21:58:29,469:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[31m[1mPOST /api/new_attending HTTP/1.1[0m" 400 -
+2020-10-25 21:58:29,472:INFO:New attending added. Username:Everett Email:Every@outlook.com
+2020-10-25 21:58:29,472:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[37mPOST /api/new_attending HTTP/1.1[0m" 200 -
+2020-10-25 21:58:29,476:INFO:New patient added. Patient ID:101
+2020-10-25 21:58:29,476:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[37mPOST /api/new_patient HTTP/1.1[0m" 200 -
+2020-10-25 21:58:29,479:INFO:New attending added. Username:Trump Email:DTrump@whitehouse.com
+2020-10-25 21:58:29,481:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[37mPOST /api/new_attending HTTP/1.1[0m" 200 -
+2020-10-25 21:58:29,483:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[31m[1mPOST /api/new_attending HTTP/1.1[0m" 400 -
+2020-10-25 21:58:29,486:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[31m[1mGET /api/status/10 HTTP/1.1[0m" 400 -
+2020-10-25 21:58:29,489:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[37mGET /api/status/120 HTTP/1.1[0m" 200 -
+2020-10-25 21:58:29,491:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[31m[1mGET /api/status/500 HTTP/1.1[0m" 400 -
+2020-10-25 21:58:29,495:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[37mGET /api/heart_rate/average/120 HTTP/1.1[0m" 200 -
+2020-10-25 21:58:29,498:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[31m[1mGET /api/patients/Flora HTTP/1.1[0m" 400 -
+2020-10-25 21:58:29,500:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[31m[1mGET /api/patients/Flora666 HTTP/1.1[0m" 400 -
+2020-10-25 21:58:29,503:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[37mGET /api/patients/Tom HTTP/1.1[0m" 200 -
+2020-10-25 21:58:29,565:INFO:Warning! Tachycardic detected! patient ID:101 heart rate:Every@outlook.com --> Attending email:101
+2020-10-25 21:58:29,666:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[37mPOST /api/heart_rate HTTP/1.1[0m" 200 -
+2020-10-25 21:58:29,679:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[37mPOST /api/heart_rate HTTP/1.1[0m" 200 -
+2020-10-25 21:58:29,687:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[37mGET /api/heart_rate/101 HTTP/1.1[0m" 200 -
+2020-10-25 21:58:29,699:INFO:127.0.0.1 - - [25/Oct/2020 21:58:29] "[37mPOST /api/heart_rate/interval_average HTTP/1.1[0m" 200 -
