@@ -1,7 +1,5 @@
 from server import patient_db, attending_db
-from flask import Flask, jsonify, request
 import pytest
-import testfixtures
 
 
 def test_process_new_attending():
@@ -519,7 +517,6 @@ def test_find_correct_attending():
 
 
 def test_process_add_heart_rate():
-    import datetime
     from server import process_add_heart_rate
     in_data1 = {"patient_id": 500,
                 "heart_rate": 100}
@@ -618,7 +615,6 @@ def test_validate_time_format():
 
 
 def test_calculate_interval_average():
-    import math
     from server import calculate_interval_average
     in_data1 = {
         "patient_id": 1,
@@ -645,7 +641,7 @@ def test_calculate_interval_average():
 
 def test_get_heart_rate_list():
     from server import get_heart_rate_list
-    patient_id = 10000
+    patient_id = "10000"
     expected = "Could not find patient in database", 400
     result = get_heart_rate_list(patient_id)
     assert result == expected
