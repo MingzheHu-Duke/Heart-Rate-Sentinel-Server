@@ -588,6 +588,21 @@ def get_all_patients(attending_username):
 
 
 def all_patients(attending_username):
+    '''Return correct results or server errors and their
+       status code
+
+    If the attending's username as an input can't match patients,
+    or the name itself is invalid, returns error and code 400;
+    otherwise return all patients' latest heart rate in a list
+    of the target attending.
+
+    Args:
+        attending_username(str): the username of target attending
+    Returns:
+        A list of dictionaries with required patients' heart rate
+        info and status code 200, or relevant error statements
+        and status code 400
+    '''
     if_str_username = str_username(attending_username)
     if if_str_username is True:
         if_username_match = match_username(attending_username)
@@ -602,6 +617,18 @@ def all_patients(attending_username):
 
 
 def str_username(attending_username):
+    '''Determine if the input username is valid and meaningful
+
+    Check if the attending's username contain any number and
+    return corresponding results
+
+    Args:
+        attending_username(str): the username of target attending
+    Returns:
+        A string that states the attending's username is invalid
+        due to the numeric elements it contains, or a bool
+        variable True that indicates the username is valid.
+    '''
     import re
     if bool(re.search(r'\d', attending_username)) is False:
         return True
@@ -610,6 +637,20 @@ def str_username(attending_username):
 
 
 def match_username(attending_username):
+    '''Match the attending's name with curren database and return
+       appropriate results
+
+    Match the patients' attending in database with the target
+    attending, return True if matched and a string of error
+    description if unmatched.
+
+    Args:
+        attending_username(str): the username of target attending
+    Returns:
+        A string that states the attending's username can't match
+        any patient in the database, or a bool variable True that
+        indicates the username does have matched patient.
+    '''
     patients_attending_list = []
     for patient in patient_db:
         patients_attending_list.append(patient["attending_username"])
@@ -620,6 +661,18 @@ def match_username(attending_username):
 
 
 def return_data_list(attending_username):
+    '''Return an attending's all patients' latest heart rate
+       in a list
+
+    Match the patients' attending in database with the target
+    attending, and accumulate all matched patients' latest
+    heart rate in a list of pre-designed dictionaries
+
+    Args:
+        attending_username(str): the username of target attending
+    Returns:
+        A list which consists of dictionaries
+    '''
     data_list = []
     # try:
     for patient in patient_db:
