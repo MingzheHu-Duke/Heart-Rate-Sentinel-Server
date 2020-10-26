@@ -1,4 +1,4 @@
-##Grants
+## Grants
 Thank you Prof.Ward and TA Evan to view and test our programs. We spent whole two weeks to build and optimize 
 the server and its relevant documents. We enjoyed the process of cooperatively working in a team as well
 as exploring brand new and pracitcal functionalities. Please feel free to provide any feedback or valueable suggestions
@@ -17,7 +17,7 @@ The server will also have routes that allow physicians to register on the server
 According to the program specifications from BME-547 assignment instructions, student Ye Tian(NetID: yt149) and Mingzhe Hu
  cooperatively designed, developed and  tested the server.py program using PyCharm. Also, we attached a corresponding client.py for convenience.
 
-###TEAM WORK ASSIGNMENT:
+### TEAM WORK ASSIGNMENT:
 
 Mingzhe: 
 *`POST /api/new_patient`
